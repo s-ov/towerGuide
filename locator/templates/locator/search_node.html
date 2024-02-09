@@ -1,0 +1,55 @@
+{% extends 'locator/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container my-1 fw-bold">
+        <div class="row mt-1">
+            <div class="col-md-3">
+                <button onclick="goBack()">&larr; НАЗАД</button>
+            </div>
+            <div class="col-md-9">
+                <h5 class="text-dark fw-bold">Введіть номер вузла(напр.: 1_11)</h>
+            </div>
+            
+        </div>
+    </div>
+    <form action="{% url 'search_node' %}" method="get">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+    <div class="container bg-light rounded mt-4 fw-bold text-dark" style="height: 180px; overflow: scroll; font-size: large;">
+        <table>
+                {% for item in node %}     
+                <tr>
+                    <td>Назва: </td>
+                    <td>{{ item.title }} {{ item.slug }}</td>
+                </tr>
+                <tr>
+                    <td>Відмітка: </td>
+                    <td>{{ item.level }} m</td>
+                </tr>
+                <tr>
+                    <td>Об / хв: </td>
+                    <td>{{ item.round_per_minute }}</td>
+                </tr>
+                <tr>
+                    <td>Потужність: </td>
+                    <td>{{ item.power }} kW</td>
+                </tr>
+                <tr>
+                    <td>MCC: </td>
+                    <td>{{ item.mcc }}</td>
+                </tr>
+                <tr>
+                    <td>PП: </td>
+                    <td>{{ item.mcc.substation }}</td>
+                </tr>
+            
+                {% endfor %}
+        </table>
+        
+    </div>
+
+  <script src="{% static 'locator/js/index.js' %}"></script>
+
+{% endblock %}

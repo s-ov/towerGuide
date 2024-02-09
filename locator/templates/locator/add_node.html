@@ -1,0 +1,33 @@
+{% extends 'locator/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4 fw-bold">
+    <div class="row mt-1">
+        <div class="col-md-6">
+            <button onclick="goBack()">&larr; НАЗАД</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="text-center text-uppercase fw-bold my-2">Додайте чи змініть вузол.</h5>
+        </div>
+    </div>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            {{ form.as_p }}
+        </div>
+      </div>
+    <button type="submit" class="btn btn-dark">Виконати</button>
+      
+</form>
+
+<script src="{% static 'locator/js/index.js' %}"></script>
+{% endblock %}

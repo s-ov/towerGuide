@@ -1,0 +1,45 @@
+{% load static %}
+{% load locator_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'locator/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'locator/css/styles.css' %}">
+    
+    <title>{{ title }}</title>
+</head>
+
+<body>
+
+    {% if request.user.is_authenticated %}
+        {% include 'locator/operation_buttons.html' %} 
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+            <!-- LEFT SIDEBAR -->
+            <div class="col-md-2 bg-dark py-2 text-white rounded">
+                {% if request.user.is_authenticated %}
+                    {% show_substations %}
+                
+                {% else%}
+                    <h6 class="bg-dark text-center fw-bold">PОБОЧА ВЕЖА</h6>
+                    <p><a href="{% url 'login' %}" style="text-decoration: none;">Увійти в застосунок</a></p>
+                {% endif %}
+            </div>
+
+            <!-- CONTENT AREA -->
+            <div class="col-md-10 bg-primary text-white rounded" id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>

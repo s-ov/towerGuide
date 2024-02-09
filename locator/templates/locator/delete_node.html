@@ -1,0 +1,16 @@
+{% extends 'locator/base.html' %}
+
+{% block content %}
+<div class="container mt-4 fw-bold text-light">
+  
+    <h2 class="fw-bold text-center">Вузол {{ node_instance.title }}_{{ node_instance.slug }} буде видалений.</h2>
+
+    <form action="{% url 'node_delete' slug=node_instance.slug %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Видалити">
+        <a href="{% url 'node-detail' slug=node_instance.slug %}" class="btn btn-secondary">Відмінити</a>
+    </form>
+
+
+</div>   
+{% endblock %}1 `

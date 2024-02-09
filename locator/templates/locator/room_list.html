@@ -1,0 +1,7 @@
+<p class="text-center fw-bold"><a href="{% url 'logout_user' %}" style="text-decoration: none;">Вийти</a></p>
+
+{% for room in rooms %}
+    <p class="custom-background mt-2 text-center rounded">
+        <a href="{{ room.get_absolute_url }}" style="text-decoration: none;">{{ room.title }}</a>
+    </p>
+{% endfor %}

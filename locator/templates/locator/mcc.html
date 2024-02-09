@@ -1,0 +1,24 @@
+{% extends 'locator/base.html' %}
+
+{% block content %}
+<section class="substation">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center text-uppercase color2 my-4">{{ title }}</h2>
+            </div>
+        </div>
+        <div class="row mb-5">
+            {% for item in rooms %}
+            <div class="col-md-6 col-sm-12 text-white">
+                <h4 class="text-center">
+                    <a href="{{ item.get_absolute_url }}" id="mcc" style="text-decoration: none;">
+                        {{ item.title }}
+                    </a>
+                </h4>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
