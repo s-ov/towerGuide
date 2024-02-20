@@ -7,6 +7,7 @@
                 </a>
             </h3>
         </div>
+        {% if user.is_superuser %}
         <div class="col-xl-2 col-md-3 col-sm-6">
             <p>
                 <a href="{% url 'add_node' %}" class="text-center text-light bg-dark mb-1 px-3" style="text-decoration: none;">
@@ -14,6 +15,7 @@
                 </a>
             </p>
         </div>
+        {% endif %}
         <div class="col-xl-2 col-md-3 col-sm-6">
             <p>
                 <a href="{% url 'search_node' %}" class="text-center text-light bg-dark mb-1 px-3" style="text-decoration: none;">
